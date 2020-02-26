@@ -15,7 +15,7 @@ Bare-bones Docker images of different Python versions (i.e: 3.6, 3.7, 3.8)
 They include the interpreter and its respective pip version.
 They also include `build-essentials` and `git` as `ONBUILD` hook.
 
-#####Python 3.6
+##### Python 3.6
 ```
 $ docker run -it customergauge/python3:3.6
 root@f88fde87b653:/# python --version
@@ -23,7 +23,7 @@ Python 3.6.9
 root@f88fde87b653:/# pip --version
 pip 20.0.2 from /usr/local/lib/python3.6/dist-packages/pip (python 3.6)
 ```
-#####Python 3.7
+##### Python 3.7
 ```
 $ docker run -it customergauge/python3:3.7
 root@6653cd54cd10:/# python --version
@@ -31,7 +31,7 @@ Python 3.7.5
 root@6653cd54cd10:/# pip --version
 pip 20.0.2 from /usr/local/lib/python3.7/dist-packages/pip (python 3.7)
 ```
-#####Python 3.8
+##### Python 3.8
 ```
 $ docker run -it customergauge/python3:3.8
 root@1558be4c4786:/# python --version
