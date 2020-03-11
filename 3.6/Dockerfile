@@ -3,9 +3,9 @@ FROM ubuntu:18.04
 ENV PIP_TMP_DIR=/tmp/pip_tmp_install
 
 
-RUN apt clean \
-    && apt -y update \
-    && apt -y install python3.6 python3.6-dev
+RUN apt clean && apt -y update
+
+RUN apt -y install python3.6 python3.6-dev
 
 # We want to install pip just for python 3.6
 RUN apt -y  install curl \
@@ -17,7 +17,7 @@ RUN apt -y  install curl \
     && cd \
     && rm -rf ${PIP_TMP_DIR}
 
-ONBUILD RUN apt -y install build-essential \
+RUN apt -y install build-essential \
     && apt -y install git
 
 # We want to canonicalize `python` and `pip` to point to this specific python version
