@@ -3,6 +3,9 @@
 
 FROM ubuntu:18.04
 
+ENV LC_ALL=C.UTF-8 \
+    LANG=C.UTF-8
+
 # Install everything we need from APT and clean the cache.
 RUN apt -y update \
     && apt -y install build-essential curl git mysql-client python3.7 python3.7-dev \
