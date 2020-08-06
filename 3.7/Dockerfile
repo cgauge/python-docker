@@ -7,8 +7,9 @@ ENV LC_ALL=C.UTF-8 \
     LANG=C.UTF-8
 
 # Install everything we need from APT and clean the cache.
+# gettext-base contains envsubst, which is used to insert the GitHub token in requirements files.
 RUN apt -y update \
-    && apt -y install build-essential curl git default-libmysqlclient-dev python3.7 python3.7-dev \
+    && apt -y install build-essential curl gettext-base git default-libmysqlclient-dev python3.7 python3.7-dev \
     && apt clean
 
 # We want to install pip just for python 3.7

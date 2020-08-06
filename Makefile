@@ -19,16 +19,16 @@ tests: $(TESTS) ## Checks if the Python version is correct in every image.
 # Render the Dockerfile for a specific version.
 %/Dockerfile: Dockerfile.mustache
 	@echo "Rendering $@"
-	echo "version: $(subst /,,$(dir $@))" | docker run --interactive --rm --volume=$(PWD):/src --workdir=/src toolbelt/mustache - Dockerfile.mustache > $@
+	echo "version: $*" | docker run --interactive --rm --volume=$(PWD):/src --workdir=/src toolbelt/mustache - Dockerfile.mustache > $@
 
 # Build the image for a specific version.
-%/image: VERSION=$(subst /,,$(dir $@))
+%/image: VERSION=$*
 %/image: IMAGE=customergauge/python3:$(VERSION)
 %/image: %/Dockerfile
 	docker build $(VERSION) --tag $(IMAGE)
 
 # Run the test for a specific version.
-%/test: VERSION=$(subst /,,$(dir $@))
+%/test: VERSION=$*
 %/test: IMAGE=customergauge/python3:$(VERSION)
 %/test: IMAGE_PYTHON_VERSION=$(shell docker run --rm $(IMAGE) python -c 'import sys; print(str(sys.version_info[0])+"."+str(sys.version_info[1]))')
 %/test: %/image
